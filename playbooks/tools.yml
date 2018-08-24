@@ -1,0 +1,9 @@
+---
+- hosts: brinda
+  become: yes
+  tasks:
+    - debug: msg="hello world"
+    - apt: name={{item}}  state=present
+      with_items:
+        - tree
+        - git
