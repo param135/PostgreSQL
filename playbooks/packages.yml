@@ -1,0 +1,12 @@
+---
+- hosts: brinda
+  become: yes
+  tasks:
+    - debug: msg="hello world"
+    - apt: name={{item}}  state=present
+      with_items:
+        - tree
+        - git
+        - python-psycopg2
+        - postgresql
+        - postgresql-9.6

@@ -1,0 +1,8 @@
+---
+- hosts: brinda
+  become: yes
+  tasks:
+    - debug: msg="removing"
+    - apt: name={{item}}  state=absent
+      with_items:
+        - postgresql

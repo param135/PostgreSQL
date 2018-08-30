@@ -1,0 +1,33 @@
+---
+- hosts: brinda
+  become: yes
+  vars:
+    locale: en_US.UTF-8
+    database_name: awx
+    database_user: "{{ database_name }}"
+    db_pass: parmy123
+  tasks:
+    - name: create project locale
+    #- debug: msg="creating database"
+      locale_gen: name={{ locale }}
+      become: True
+
+    - name: create the database
+      postgresql_db:
+        name: "{{ database_name }}"
+        port: "5433"
+        owner: "{{ database_user }}"
+        encoding: UTF8
+        lc_ctype: "{{ locale }}"
+        lc_collate: "{{ locale }}"
+      become: True
+      become_user: postgres
+
+    - name: create a DB user
+      postgresql_user:
+        db: "{{ database_name }}"
+        name: "{{ database_user }}"
+        password: "{{ db_pass }}"
+        priv: ALL
+      become: True
+      become_user: postgres

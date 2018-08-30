@@ -8,13 +8,23 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0~/with
+~MSle0~/5433
+
+# Last Substitute String:
+$
 
 # Command Line History (newest to oldest):
 :wq
+:q
 :w
+:q!
 
 # Search String History (newest to oldest):
+?/5433
+?/pos
+? bse
+?/debu
+?/post
 ?/with
 ?/em:
 ?/item
@@ -29,26 +39,86 @@
 
 # Registers:
 "0	LINE	0
-	    - debug: msg="hello world"
+	        name: "{{ database_name }}"
 "1	LINE	0
-	        - git
+	
+"2	LINE	0
+	    - name: create a DB user
+	      postgresql_user:
+	        db: "{{ database_name }}"
+	        name: "{{ database_user }}"
+	        password: "{{ db_pass }}"
+	        password: "{{ db_pass }}"
+	      become: True
+	      become_user: postgres
+"3	CHAR	0
+	me: create a DB user
+	      postgresql_user:
+	        db: "{{ database_name }}"
+	        name: "{{ database_user }}"
+	        password: "{{ db_pass }}"
+	        password: "{{ db_pass }}"
+	      become: True
+	      become_user: postgres
+"4	LINE	0
+	     
+"5	LINE	0
+	      with_items:
+"6	LINE	0
+	    - apt: name={{item}}  state=present
+"7	LINE	0
+	        - postgresql
+"8	LINE	0
+	    #- debug: msg="creating database"
+"9	LINE	0
+	    - debug: msg="creating database"
 ""-	CHAR	0
-	all
+	"{{ database_name }}"
 
 # File marks:
-'0  6  24  ~/tools.yml
-'1  2  14  ~/tools.yml
-'2  9  4  ~/tools.yml
-'3  7  15  ~/tools.yml
-'4  3  2  ~/tools.yml
-'5  8  13  ~/tools.yml
-'6  5  14  ~/tools.yml
-'7  2  29  ~/hosts
-'8  14  18  ~/.ansible.cfg
+'0  18  19  ~/playbooks/database.yml
+'1  1  0  ~/playbooks/database.yml
+'2  33  17  ~/playbooks/database.yml
+'3  17  0  ~/playbooks/database_remove.yml
+'4  14  19  ~/playbooks/database.yml
+'5  32  8  ~/playbooks/database_remove.yml
+'6  1  0  ~/database_remove.yml
+'7  1  0  ~/playbooks/database_remove.yml
+'8  1  0  ~/playbooks/packages_remove.yml
+'9  14  8  ~/playbooks/database.yml
 
 # Jumplist (newest first):
--'  6  24  ~/tools.yml
+-'  18  19  ~/playbooks/database.yml
+-'  1  0  ~/playbooks/database.yml
+-'  33  17  ~/playbooks/database.yml
+-'  14  0  ~/playbooks/database.yml
+-'  17  0  ~/playbooks/database_remove.yml
+-'  1  0  ~/playbooks/database_remove.yml
+-'  32  8  ~/playbooks/database_remove.yml
+-'  1  0  ~/database_remove.yml
+-'  1  0  ~/playbooks/packages_remove.yml
+-'  1  0  ~/playbooks/packages.yml
+-'  12  23  ~/playbooks/packages.yml
+-'  1  0  ~/playbooks/p
+-'  21  24  ~/playbooks/database.yml
+-'  19  8  ~/playbooks/database.yml
+-'  10  24  ~/playbooks/packages.yml
+-'  5  4  ~/playbooks/database.yml
+-'  10  0  ~/playbooks/database.yml
+-'  11  4  ~/playbooks/database.yml
+-'  12  6  ~/playbooks/database.yml
+-'  1  0  ~/playbooks/database.
+-'  1  0  ~/database.yml
+-'  13  6  ~/playbooks/database.yml
+-'  34  4  ~/playbooks/database.yml
+-'  31  0  /etc/passwd
+-'  1  0  /etc/passwd
+-'  1  0  ~/playbooks/tools.yml
+-'  10  14  ~/playbooks/tools.yml
+-'  1  0  ~/hosts
 -'  1  0  ~/tools.yml
+-'  4  0  ~/playbooks/tools.yml
+-'  6  24  ~/tools.yml
 -'  2  14  ~/tools.yml
 -'  9  4  ~/tools.yml
 -'  7  15  ~/tools.yml
@@ -56,7 +126,6 @@
 -'  8  13  ~/tools.yml
 -'  5  14  ~/tools.yml
 -'  2  29  ~/hosts
--'  1  0  ~/hosts
 -'  14  18  ~/.ansible.cfg
 -'  1  0  ~/.ansible.cfg
 -'  14  18  ~/.ansible.cfg
@@ -73,8 +142,6 @@
 -'  1  0  ~/.ansible.cfg
 -'  14  18  ~/.ansible.cfg
 -'  1  0  ~/.ansible.cfg
--'  2  29  ~/hosts
--'  1  0  ~/hosts
 -'  14  18  ~/.ansible.cfg
 -'  1  0  ~/.ansible.cfg
 -'  14  18  ~/.ansible.cfg
@@ -91,8 +158,6 @@
 -'  1  0  ~/.ansible.cfg
 -'  14  18  ~/.ansible.cfg
 -'  1  0  ~/.ansible.cfg
--'  2  29  ~/hosts
--'  1  0  ~/hosts
 -'  14  18  ~/.ansible.cfg
 -'  1  0  ~/.ansible.cfg
 -'  14  18  ~/.ansible.cfg
@@ -109,8 +174,6 @@
 -'  1  0  ~/.ansible.cfg
 -'  14  18  ~/.ansible.cfg
 -'  1  0  ~/.ansible.cfg
--'  2  29  ~/hosts
--'  1  0  ~/hosts
 -'  14  18  ~/.ansible.cfg
 -'  1  0  ~/.ansible.cfg
 -'  14  18  ~/.ansible.cfg
@@ -118,37 +181,133 @@
 -'  14  18  ~/.ansible.cfg
 -'  1  0  ~/.ansible.cfg
 -'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  2  29  ~/hosts
--'  1  0  ~/hosts
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
--'  1  0  ~/.ansible.cfg
--'  14  18  ~/.ansible.cfg
+-'  17  0  ~/playbooks/database_remove.yml
+-'  1  0  ~/playbooks/database_remove.yml
+-'  32  0  ~/playbooks/database.yml
 
 # History of marks within files (newest to oldest):
 
+> ~/playbooks/database.yml
+	"	18	19
+	^	18	20
+	.	18	19
+	+	10	34
+	+	10	32
+	+	12	35
+	+	13	17
+	+	10	4
+	+	34	0
+	+	10	0
+	+	12	0
+	+	11	4
+	+	4	6
+	+	5	22
+	+	11	4
+	+	14	0
+	+	14	0
+	+	14	27
+	+	14	48
+	+	34	0
+	+	14	30
+	+	14	42
+	+	14	16
+	+	14	25
+	+	14	34
+	+	15	0
+	+	14	0
+	+	15	30
+	+	16	18
+	+	17	29
+	+	19	30
+	+	14	25
+	+	14	21
+	+	17	13
+	+	19	14
+	+	20	21
+	+	21	10
+	+	22	17
+	+	6	16
+	+	8	10
+	+	7	0
+	+	6	31
+	+	7	39
+	+	8	20
+	+	19	24
+	+	6	21
+	+	14	8
+	+	14	36
+	+	14	8
+	+	14	0
+	+	26	0
+	+	25	0
+	+	14	0
+	+	31	16
+	+	18	19
+
+> ~/playbooks/database_remove.yml
+	"	17	0
+	^	17	1
+	.	17	0
+	+	20	20
+	+	18	0
+	+	17	28
+	+	15	21
+	+	28	0
+	+	24	17
+	+	17	0
+
+> ~/database_remove.yml
+	"	1	0
+
+> ~/playbooks/packages_remove.yml
+	"	1	0
+	^	6	38
+	.	8	0
+	+	5	25
+	+	6	37
+	+	8	0
+	+	9	0
+	+	8	0
+
+> ~/playbooks/packages.yml
+	"	1	0
+	^	12	24
+	.	12	23
+	+	10	0
+	+	11	0
+	+	13	0
+	+	12	23
+
+> ~/packages.yml
+	"	1	0
+
+> ~/playbooks/p
+	"	1	0
+
+> ~/playbooks/database.
+	"	1	0
+
+> ~/database.yml
+	"	1	0
+
+> /etc/passwd
+	"	31	0
+
+> ~/playbooks/tools.yml
+	"	1	0
+	^	10	15
+	.	10	14
+	+	1	0
+	+	10	14
+
+> ~/hosts
+	"	1	0
+	^	2	49
+	.	2	29
+	+	2	29
+
 > ~/tools.yml
-	"	6	24
+	"	1	0
 	^	2	15
 	.	6	24
 	+	5	30
@@ -169,12 +328,6 @@
 	+	9	6
 	+	2	14
 	+	6	24
-
-> ~/hosts
-	"	2	29
-	^	2	49
-	.	2	29
-	+	2	29
 
 > ~/.ansible.cfg
 	"	14	18
